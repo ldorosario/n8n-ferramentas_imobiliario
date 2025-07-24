@@ -1,0 +1,823 @@
+{
+  "name": "ferramentas_imobiliario",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "796e474b-227c-4e14-815b-b4a8ebe97220"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        -20
+      ],
+      "id": "971104cd-d1d1-46c2-83f7-ffef6bc954da",
+      "name": "MCP Server Trigger",
+      "webhookId": "796e474b-227c-4e14-815b-b4a8ebe97220"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "f87e651bb9a30f1b6584cdcfc86e19cee89c77f73d39730bd83c2dc5b2d1971f@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "testes_n8n"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "updateFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        580,
+        500
+      ],
+      "id": "eb612ccd-6201-44cf-823f-8abe66f70ac6",
+      "name": "Atualiza_evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "2AyNA4T6ljeyqzfE",
+          "name": "Calendar_oficialanderson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "f87e651bb9a30f1b6584cdcfc86e19cee89c77f73d39730bd83c2dc5b2d1971f@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "testes_n8n"
+        },
+        "eventId": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Event_ID', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        720,
+        500
+      ],
+      "id": "ddf21942-0052-4f04-b3c1-1f4de5b1378a",
+      "name": "deleta_evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "2AyNA4T6ljeyqzfE",
+          "name": "Calendar_oficialanderson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "f87e651bb9a30f1b6584cdcfc86e19cee89c77f73d39730bd83c2dc5b2d1971f@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "testes_n8n"
+        },
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "timeMin": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('After', ``, 'string') }}",
+        "timeMax": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Before', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        880,
+        500
+      ],
+      "id": "16961826-fd5c-4427-a9a0-d687f877d088",
+      "name": "consulta_todos_eventos",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "2AyNA4T6ljeyqzfE",
+          "name": "Calendar_oficialanderson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "f87e651bb9a30f1b6584cdcfc86e19cee89c77f73d39730bd83c2dc5b2d1971f@group.calendar.google.com",
+          "mode": "list",
+          "cachedResultName": "testes_n8n"
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', `o start do evento no formato: [DateTime: 2025-07-21T15:13:07.646-03:00]`, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', `O fim do evento no formato: [DateTime: 2025-07-21T15:13:07.646-03:00]`, 'string') }}",
+        "useDefaultReminders": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Use_Default_Reminders', ``, 'boolean') }}",
+        "additionalFields": {
+          "attendees": [],
+          "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('ID', `crie um ID para esse evento`, 'string') }}",
+          "location": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Location', `preencher com codigo_imovel e informacoes relevantes`, 'string') }}",
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', `titulo do evento, nome do cliente e codigo_imovel`, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        500
+      ],
+      "id": "3c6155e9-d3c7-422b-a762-02550d66f3cc",
+      "name": "cria_evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "2AyNA4T6ljeyqzfE",
+          "name": "Calendar_oficialanderson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Agendamento",
+        "height": 360,
+        "width": 600,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        540,
+        380
+      ],
+      "typeVersion": 1,
+      "id": "8f33261b-61cc-40fe-ac58-6bf7badf7336",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## Planilha",
+        "height": 360,
+        "width": 520
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -20,
+        380
+      ],
+      "typeVersion": 1,
+      "id": "a0dca121-259b-4885-aebb-f6fc1418b3e6",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g",
+          "mode": "list",
+          "cachedResultName": "clientes_testes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nome', ``, 'string') }}",
+            "Telefone": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Telefone', ``, 'string') }}",
+            "E-mail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('E-mail', ``, 'string') }}",
+            "Dormitórios": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Dormit_rios', ``, 'string') }}",
+            "Bairro": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Bairro', ``, 'string') }}",
+            "Valor": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Valor', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Telefone"
+          ],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dormitórios",
+              "displayName": "Dormitórios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Bairro",
+              "displayName": "Bairro",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor",
+              "displayName": "Valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        40,
+        480
+      ],
+      "id": "ac339fe9-6f55-44ac-bb70-09af40ad176a",
+      "name": "add_atualiza_linha",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p63BlkJgYEB46cw8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g",
+          "mode": "list",
+          "cachedResultName": "clientes_testes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        200,
+        480
+      ],
+      "id": "78f2abb4-fbbb-4eaa-8a4b-fe83a25dc350",
+      "name": "consulta_linha",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p63BlkJgYEB46cw8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g",
+          "mode": "list",
+          "cachedResultName": "clientes_testes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19D79W54NJ8aZsPgGTKcW8Nwoe4Z7_UKixzJqHbMwI2g/edit#gid=0"
+        },
+        "startIndex": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start_Row_Number', ``, 'number') }}",
+        "numberToDelete": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Number_of_Rows_to_Delete', ``, 'number') }}"
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        360,
+        480
+      ],
+      "id": "589926e7-2af0-4f54-b695-4ad718fa7f0b",
+      "name": "delete_linha",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "p63BlkJgYEB46cw8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Conhecimento",
+        "height": 360,
+        "width": 560,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -620,
+        380
+      ],
+      "typeVersion": 1,
+      "id": "c5505c5f-22a4-4dca-9edd-6c598ad6ea99",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "lista os imóveis disponiveis",
+        "operation": "get",
+        "tableId": "imoveis",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "bairrocomercial",
+              "keyValue": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('conditions0_Value', `esse valor é o bairro, caso esteja com alguma letra errada, corrija antes de colocar e lembre que a tabela do SUPABASE é case sensitive`, 'string') }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        440
+      ],
+      "id": "a1a5e9ff-452b-48db-af96-5e4f7a27b0c7",
+      "name": "consulta_imoveis",
+      "credentials": {
+        "supabaseApi": {
+          "id": "SOJ13axB7FxTdFat",
+          "name": "Supabase - Conta Principal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Obtenha informações sobre a imobiliária, promoções, condições especiais, localização e corretores de plantão",
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "topK": 50,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        -320,
+        420
+      ],
+      "id": "acd78c70-3efb-4699-9be3-6b0f35320dc4",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "SOJ13axB7FxTdFat",
+          "name": "Supabase - Conta Principal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -320,
+        580
+      ],
+      "id": "7cd0b595-579c-456c-b974-c62fcab76471",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "Ps2BjitQWclVdBv9",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## CRM",
+        "height": 360,
+        "width": 540,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1240,
+        380
+      ],
+      "typeVersion": 1,
+      "id": "f6c65f1e-8f88-4edd-aa67-ff6700fc3f51",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## E-mail",
+        "height": 320,
+        "width": 540,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1240,
+        -340
+      ],
+      "typeVersion": 1,
+      "id": "9e5b3ea5-708b-4172-a6f7-70f55bb61037",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "data e hopra de hoje",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTimeTool",
+      "typeVersion": 2,
+      "position": [
+        560,
+        60
+      ],
+      "id": "ec27b22d-1347-4d84-95db-673f2a88ee6b",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Consulta o Lead no CRM\n\nNa busca do lead deve seguir esse exemplo:\n\n{\"filter\":{\"EmailResidencial\": \"\"},\"fields\":[\"Codigo\",\"Nome\",\"Sexo\",\"AniversarioDia\",\"AniversarioMes\",\"Investidor\", \"Interesse\", \"VeiculoCaptacao\", \"Corretor\",\"Celular\",\"EmailResidencial\"],\"paginacao\":{\"pagina\":\"1\",\"quantidade\":\"50\"}}\n\ndeve seguir esse exemplo e modificar a busca no filter de acordo com o que o usuario informar (email,nome,celular,etc,codigo)\n\nlembrando que quando o usuario fornecer o codigo, ao colocar na requisicao ele dever ser convertido para NUMBER \n\nno retorno para o usuario, deve sempre enviar o codigo do lead.\n\nExemplo de como dever ser montada a url:\nNesta pesquisa, informe o campo e seus valores no item \"filter\".\n1\nhttp://sandbox-rest.vistahost.com.br/clientes/listar?key=c9fdd79584fb8d369a6a579af1a8f681&showtotal=1&pesquisa={\"fields\":[\"Codigo\",\"Nome\",\"Enderecoresidencial\",\"Bairroresidencial\",\"Foneprincipal\",\"VeiculoCaptacao\"],\"filter\":{\"Bairroresidencial\":[\"Centro\",\"Moema\"]},\"order\":{\"Bairroresidencial\":\"asc\"},\"paginacao\":{\"pagina\":1,\"quantidade\":10}}",
+        "url": "https://suderneg-rest.vistahost.com.br/clientes/listar",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "216274523e3288f6dc9297975d239d80"
+            },
+            {
+              "name": "v2",
+              "value": "1"
+            },
+            {
+              "name": "pesquisa",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters2_Value', ``, 'string') }}"
+            },
+            {
+              "name": "showtotal",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -1180,
+        560
+      ],
+      "id": "40d6aed7-6323-4d80-98ae-a52af475b29f",
+      "name": "consultar_lead",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=cadastra lead no CRM\n\n  envie o body na requisição de acordo como o modelo abaixo:\n{\n  \"fields\": {\n    \"Nome\": \"\",\n    \"Sexo\": \"\",\n    \"AniversarioDia\": \"0\",\n    \"AniversarioMes\": \"0\",\n    \"Investidor\": \"\",\n    \"Interesse\": \"\",\n    \"VeiculoCaptacao\": \"\",\n    \"EmailResidencial\":\"\",\n    \"FonePrincipal\":\"\"\n  }\n}\n\nOs campos obrigatórios são:\nNome;\nFonePrincipal;\nEmailResidencial;\nInteresse;\nVeiculoCaptacao será sempre Bot Suder.",
+        "method": "POST",
+        "url": "https://suderneg-rest.vistahost.com.br/clientes/detalhes",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "216274523e3288f6dc9297975d239d80"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('JSON', ``, 'json') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -1020,
+        560
+      ],
+      "id": "ca0f1465-b19b-4eb8-ae37-da74686ae3ec",
+      "name": "cadastrar_lead"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Para alterar um cliente, você deve enviar uma requisição PUT para o método:\n/clientes/detalhes\nVocê deve informar na URL o parâmetro \"cliente\" com o código do cliente a ser alterado.\nVocê deve informar no body o parâmetro \"cadastro\" com um JSON contendo os dados a serem cadastrados. Este JSON deve conter os campos com seus valores no item \"fields\".\nO body aceita ambos Content-type: application/x-www-form-urlencoded e Content-type: application/json. Nos exemplos, usaremos Content-type: application/x-www-form-urlencoded.\n\nEXEMPLO DE URL MONTADA PARA A CHAMADA\n\nhttps://suderneg-rest.vistahost.com.br/clientes/detalhes?key=c9fdd79584fb8d369a6a579af1a8f681&cliente=19155\n\n\n\nO parametro parameters0_Value sempre sera o codigo do lead\nO paremetro parameters1_Value sera o body que era enviado, segue o exemplo:\nBody da Request:\n\ncadastro={\"fields\":{\"FoneResidencial\":\"21 86530000\"}}\n",
+        "method": "PUT",
+        "url": "https://suderneg-rest.vistahost.com.br/clientes/detalhes",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "216274523e3288f6dc9297975d239d80"
+            },
+            {
+              "name": "=cliente",
+              "value": "={{ $fromAI('parameters0_Value', ``, 'string') }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "=application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "cadastro",
+              "value": "={{ $fromAI('parameters1_Value', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        -860,
+        560
+      ],
+      "id": "90f90f11-5616-4eb6-a1a4-3751e9d60507",
+      "name": "atualizar_lead",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "## Canal de suporte",
+        "height": 320,
+        "width": 540,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1240,
+        20
+      ],
+      "typeVersion": 1,
+      "id": "db221916-b70f-4fc6-b591-9e970dfa5e19",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Atualiza_evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "deleta_evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consulta_todos_eventos": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cria_evento": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add_atualiza_linha": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consulta_linha": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "delete_linha": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consulta_imoveis": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "consultar_lead": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cadastrar_lead": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "atualizar_lead": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "da33a48d-cfb2-43d9-b2dd-702aa9f7e59f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ab457d8160a93cf45edd165c0018c1c5340dc44236d6ed619e14db02a8058958"
+  },
+  "id": "AJGlIAZD2uN10i7c",
+  "tags": [
+    {
+      "createdAt": "2025-06-30T17:51:35.133Z",
+      "updatedAt": "2025-06-30T17:51:35.133Z",
+      "id": "uRLZI4VIeX98pmLS",
+      "name": "imoveis"
+    },
+    {
+      "createdAt": "2025-07-17T21:16:40.761Z",
+      "updatedAt": "2025-07-17T21:16:40.761Z",
+      "id": "SqWITgFOPy6CRRCx",
+      "name": "testes"
+    },
+    {
+      "createdAt": "2025-07-21T12:08:49.429Z",
+      "updatedAt": "2025-07-21T12:08:49.429Z",
+      "id": "RhbG9ZnfFqN7Pq9R",
+      "name": "Nina"
+    },
+    {
+      "createdAt": "2025-07-22T16:40:18.133Z",
+      "updatedAt": "2025-07-22T16:40:18.133Z",
+      "id": "V3qFOK24O1XrR9jk",
+      "name": "matriz"
+    }
+  ]
+}
